@@ -1,0 +1,6 @@
+@Oracamento_mensal_HostAddress = http://localhost:5153
+
+GET {{Oracamento_mensal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
