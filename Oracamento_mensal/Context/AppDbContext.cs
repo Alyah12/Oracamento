@@ -14,5 +14,5 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<OrcamentoDespesa> OrcamentoDespesas { get; set; }
-    public DbSet<ProgramacaoFinanceiraDespesaConfig> ProgramacaoFinanceiraDespesa { get; set; }
+    public DbSet<ProgramacaoFinanceira> ProgramacaoFinanceiraDespesa { get; set; }
 }
