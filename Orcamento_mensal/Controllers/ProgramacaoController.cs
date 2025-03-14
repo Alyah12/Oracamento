@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Oracamento_mensal.Context;
-using Oracamento_mensal.Models;
+using Orcamento_mensal.Context;
+using Orcamento_mensal.Models;
 
-namespace Oracamento_mensal.Controllers;
+namespace Orcamento_mensal.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -16,8 +17,8 @@ public class ProgramacaoController : ControllerBase
         _context = context;
     }
 
+    [Authorize]
     [HttpPost]
-
     public async Task<ActionResult> PostAsync(ProgramacaoFinanceira programacaoFinanceira)
     {
         _context.ProgramacaoFinanceiraDespesa.Add(programacaoFinanceira);
@@ -27,7 +28,7 @@ public class ProgramacaoController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<ActionResult> Criar(int Id, [FromBody] ProgramacaoFinanceira programacao)
+    public async Task<ActionResult> PutAsync (int Id, [FromBody] ProgramacaoFinanceira programacao)
     {
         if (Id != programacao.ProgramacaoId)
         {
@@ -41,7 +42,7 @@ public class ProgramacaoController : ControllerBase
     }
 
     [HttpGet("calcular/{ano}/{unidadeGestoraId}")]
-    public async Task<IActionResult> CalcularProgressao(int ano, int unidadeGestoraId)
+    public async Task<IActionResult> CalcularProgressaoAsync(int ano, int unidadeGestoraId)
     {
         var orcamento = await _context.OrcamentoDespesas
             .FirstOrDefaultAsync(o => o.Ano == ano && o.UnidadeGestora == unidadeGestoraId);
@@ -95,7 +96,7 @@ public class ProgramacaoController : ControllerBase
 
     [HttpGet("Ano:int, UnidadeGestora:int")]
 
-    public IActionResult Search(int Ano, int UnidadeGestora)
+    public IActionResult SearchAsync(int Ano, int UnidadeGestora)
     {
         var search = _context.OrcamentoDespesas.
             FindAsync(Ano, UnidadeGestora);
@@ -108,8 +109,8 @@ public class ProgramacaoController : ControllerBase
         return Ok(search);
     }
 
+    [Authorize]
     [HttpDelete]
-
     public async Task<ActionResult> DeleteAsync(int id)
     {
         if (id == null)

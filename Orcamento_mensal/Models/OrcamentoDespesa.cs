@@ -1,4 +1,4 @@
-﻿namespace Oracamento_mensal.Models;
+﻿namespace Orcamento_mensal.Models;
 
 public class OrcamentoDespesa
 {

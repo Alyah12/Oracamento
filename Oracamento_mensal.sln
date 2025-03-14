@@ -1,11 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oracamento_mensal", "Oracamento_mensal\Oracamento_mensal.csproj", "{3CD629AD-A9A3-40BC-B48D-6135489E5657}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2A1F8914-8623-457A-9FDE-C121CECD055E}"
-	ProjectSection(SolutionItems) = preProject
-		compose.yaml = compose.yaml
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orcamento_mensal", "Orcamento_mensal\Orcamento_mensal.csproj", "{3CD629AD-A9A3-40BC-B48D-6135489E5657}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
