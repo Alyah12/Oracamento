@@ -1,5 +1,8 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Oracamento_mensal.Context;
+using Microsoft.IdentityModel.Tokens;
+using Orcamento_mensal.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,21 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>( options =>
     options.UseSqlite(("sqlite"))
     );
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("chave-secreta")),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
+
 
 var app = builder.Build();
 

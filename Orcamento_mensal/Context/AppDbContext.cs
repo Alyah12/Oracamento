@@ -1,18 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Oracamento_mensal.Models;
+using Orcamento_mensal.Models;
 
-namespace Oracamento_mensal.Context;
+namespace Orcamento_mensal.Context;
 
 public class AppDbContext : DbContext
 {
-    protected AppDbContext()
-    {
-    }
 
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
 
     public DbSet<OrcamentoDespesa> OrcamentoDespesas { get; set; }
-    public DbSet<ProgramacaoFinanceiraDespesaConfig> ProgramacaoFinanceiraDespesa { get; set; }
+    public DbSet<ProgramacaoFinanceira> ProgramacaoFinanceiraDespesa { get; set; }
+
+    public DbSet<User> User { get; set; }
 }

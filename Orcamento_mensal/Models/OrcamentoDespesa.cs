@@ -1,8 +1,8 @@
-﻿namespace Oracamento_mensal.Models;
+﻿namespace Orcamento_mensal.Models;
 
 public class OrcamentoDespesa
 {
-    public int OrcamentoDispesaID { get; set; }
+    public int OrcamentoId { get; set; }
     public int Codigo { get; set; }
     public string Ficha { get; set; }
     public int Ano { get; set; }
