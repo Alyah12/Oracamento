@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Orcamento_mensal.Context;
+using Orcamento_mensal.Dto;
+using Orcamento_mensal.Models;
 
 namespace Orcamento_mensal.Controllers;
 
@@ -18,9 +20,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public IActionResult Login([FromBody] LoginRequest request)
+    public IActionResult Login([FromBody] UserDto user)
     {
-        if (request.Email == _context.User.Email && request.Password == _context.User.Senha)
+        if (user.Nome == "admin" && user.Senha == "password")
         {
             var token = _jwtService.GenerateToken("1");
             return Ok(new { Token = token });
